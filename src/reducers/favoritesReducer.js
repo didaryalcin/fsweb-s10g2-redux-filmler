@@ -1,7 +1,7 @@
 import {
-    ADD_FAVORITE,
     TOGGLE_FAVORITES,
     REMOVE_FAVORITE,
+    ADD_FAVORITE,
   } from "../actions/favoritesActions";
   
   const initialState = {
@@ -9,27 +9,37 @@ import {
     displayFavorites: true,
   };
   
-  const reducer = (state = initialState, action) => {
+  const favoriteReducer = (state = initialState, action) => {
     switch (action.type) {
       case ADD_FAVORITE:
-        return {
-          ...state,
-          favorites: [...state.favorites, action.payload],
-        };
-      case TOGGLE_FAVORITES:
-        return {
-          ...state,
-          displayFavorites: !state.displayFavorites,
-        };
+        let newState = {};
+        if (state.favorites.find((item) => item.id === action.payload.id)) {
+          newState = { ...state };
+        } else {
+          newState = {
+            ...state,
+            favorites: [...state.favorites, action.payload],
+          };
+        }
+        return newState;
+  
       case REMOVE_FAVORITE:
         return {
           ...state,
           favorites: state.favorites.filter((item) => action.payload !== item.id),
         };
+  
+      case TOGGLE_FAVORITES:
+        console.log("case");
+        return {
+          ...state,
+          displayFavorites: !state.displayFavorites,
+        };
+  
       default:
         return state;
     }
   };
   
-  export default reducer;
+  export default favoriteReducer;
   

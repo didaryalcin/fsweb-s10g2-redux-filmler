@@ -1,11 +1,13 @@
+import React from "react";
 
-import { useSelector } from "react-redux";
 import MovieListItem from "./MovieListItem";
-import MovieFooter from "./MovieFooter";
+import MovieListFooter from "./MovieListFooter";
+import { useSelector } from "react-redux";
+import { store } from "../store/store";
 
 const MovieList = (props) => {
-  const movies = useSelector((store) => store.movieReducer.movies);
-  console.log(movies);
+  const movies = useSelector((store) => store.reducer.movies);
+
   return (
     <div className="flex-1">
       <div className="overflow-hidden bg-white rounded-md shadow mb-4 sm:min-h-[400px]">
@@ -28,7 +30,7 @@ const MovieList = (props) => {
         </table>
       </div>
 
-      <MovieFooter totalMovies={movies.length} />
+      <MovieListFooter totalMovies={movies.length} />
     </div>
   );
 };
