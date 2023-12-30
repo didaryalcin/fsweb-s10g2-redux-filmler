@@ -1,5 +1,3 @@
-import React from "react";
-import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFavorite } from "../actions/favoritesActions";
 const FavoriteMovieList = (props) => {

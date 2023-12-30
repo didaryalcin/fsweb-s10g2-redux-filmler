@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 const MovieListFooter = (props) => {
   const { totalMovies } = props;

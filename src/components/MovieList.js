@@ -1,4 +1,4 @@
-import React from "react";
+
 import { useSelector } from "react-redux";
 import MovieListItem from "./MovieListItem";
 import MovieFooter from "./MovieFooter";
